@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #project apps
     'member',
     'trainer',
+    'subscription',
 
 ]
 
