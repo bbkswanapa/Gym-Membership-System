@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'member',
     'trainer',
     'subscription',
+    'attendance',
 
 ]
 
