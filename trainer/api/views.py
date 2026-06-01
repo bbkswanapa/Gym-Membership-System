@@ -4,11 +4,13 @@ from rest_framework.response import Response
 
 from trainer.api.serializer import TrainerSerializer
 from trainer.models import Trainer
+from rest_framework.permissions import IsAuthenticated
 
 
 class TrainerView(GenericAPIView):
     queryset = Trainer.objects.all()
     serializer_class = TrainerSerializer
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         trainer = Trainer.objects.all()
@@ -33,7 +35,7 @@ class TrainerView(GenericAPIView):
 class TrainerUpdateAndDelete(GenericAPIView):
     queryset = Trainer.objects.all()
     serializer_class = TrainerSerializer
-
+    permission_classes = [IsAuthenticated]
     def put(self, request, pk):
         trainer = Trainer.objects.get(id=pk)
         data = request.data
