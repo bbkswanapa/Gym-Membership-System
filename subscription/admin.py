@@ -49,6 +49,7 @@ class GymMemberShipAdmin(admin.ModelAdmin):
         "member",
         "trainer",
         "subscription",
+        "price",
         "days",
         "created_at",
     )
