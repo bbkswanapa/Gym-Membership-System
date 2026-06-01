@@ -50,7 +50,6 @@ class GymMemberShipAdmin(admin.ModelAdmin):
         "trainer",
         "subscription",
         "days",
-        "price",
         "created_at",
     )
 
@@ -62,6 +61,7 @@ class GymMemberShipAdmin(admin.ModelAdmin):
     readonly_fields = (
         "created_at",
         "updated_at",
+        "price",
     )
 
     ordering = ("-created_at",)

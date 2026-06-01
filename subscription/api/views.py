@@ -75,3 +75,12 @@ class GymMemberShipView(GenericAPIView):
         data = GymMemberShip.objects.all()
         serializer = GymMemberShipSerializer(data, many=True)
         return Response(serializer.data, 200)
+    
+    def post(self, request):
+        data = request.data
+        serializer = GymMemberShipSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "GymMemberShip created successfully"}, 201)
+        else:
+            return Response(serializer.errors, 422)
