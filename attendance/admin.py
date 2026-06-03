@@ -7,6 +7,7 @@ from attendance.models import Attendance
 @admin.register(Attendance)
 class AttendanceAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'member',
         'attendance_date',
         'check_in',

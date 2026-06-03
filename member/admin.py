@@ -9,6 +9,7 @@ from .models import Member
 class MemberAdmin(admin.ModelAdmin):
 
     list_display = [
+        'id',
         'first_name',
         'last_name',
         'phone',

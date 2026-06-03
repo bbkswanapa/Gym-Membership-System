@@ -6,7 +6,7 @@ class Attendance(models.Model):
     member = models.ForeignKey('member.Member', on_delete=models.CASCADE)
     check_in = models.TimeField(null=True, blank=True)
     check_out = models.TimeField(null=True, blank=True)
-    attendance_date = models.DateField(auto_now_add=True)
+    attendance_date = models.DateField()
     is_present = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -15,3 +15,4 @@ class Attendance(models.Model):
 
     class Meta:
         db_table = "attendance"
+        unique_together =['member', 'attendance_date']
