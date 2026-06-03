@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #3rd party apps
     'rest_framework',
     'drf_spectacular',
+    'flower',
 
     #project apps
     'member',
@@ -130,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
 
@@ -147,3 +148,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CELERY_TIMEZONE = "Asia/Kathmandu"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+#Celery FLower
+FLOWER_URL = "http://localhost:5555"
+FLOWER_URL_PREFIX = "flower"
