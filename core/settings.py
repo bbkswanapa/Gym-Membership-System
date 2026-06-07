@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+
 from pathlib import Path
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     'flower',
+    'django_celery_beat',
 
     #project apps
     'member',
@@ -151,7 +155,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CELERY_TIMEZONE = "Asia/Kathmandu"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 
 #Celery FLower
 FLOWER_URL = "http://localhost:5555"
 FLOWER_URL_PREFIX = "flower"
+
+from celery.schedules import crontab
+from datetime import timedelta
+CELERY_BEAT_SCHEDULE = {
+    # 'all-members-active': {
+    #     'task': 'member.tasks.mark_all_member_active',
+    #     #'schedule': crontab(minutes=5), # Run every day at 5
+    #     'schedule': timedelta(seconds=4), # Run every 4 seconds
+    # },
+    'add-attendance': {
+        'task': 'attendance.tasks.add_attendace',
+        'schedule': timedelta(seconds=10), # Run every 10 seconds
+    }
+}
