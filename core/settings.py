@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'trainer',
     'subscription',
     'attendance',
+    'TXN',
+    'exercise',
 
 ]
 
@@ -169,8 +171,26 @@ CELERY_BEAT_SCHEDULE = {
     #     #'schedule': crontab(minutes=5), # Run every day at 5
     #     'schedule': timedelta(seconds=4), # Run every 4 seconds
     # },
-    'add-attendance': {
-        'task': 'attendance.tasks.add_attendace',
-        'schedule': timedelta(seconds=10), # Run every 10 seconds
-    }
+    # 'add-attendance': {
+    #     'task': 'attendance.tasks.add_attendace',
+    #     'schedule': timedelta(seconds=2), # Run every 2 seconds
+    # }
+
+ 
+    'add_today_attendance': {
+      'task': 'attendance.tasks.add_attendance',
+      'schedule': crontab(
+            hour=14,
+             minute=50,
+             day_of_week='0-5'#Monday to Friday
+             ), 
+       },
+    'mark_attendance': {
+        'task': 'attendance.tasks.mark_member_attendance',
+        'schedule': crontab(
+            hour=14,
+             minute=55,
+             day_of_week='0-5'
+             ), 
+        },
 }
