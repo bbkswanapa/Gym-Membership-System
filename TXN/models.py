@@ -1,10 +1,9 @@
 from django.db import models
-from rest_framework import status
-
 
 # Create your models here.  
 class Status(models.TextChoices):
     INITIAL = 'Initial'
+    KHALTI_PROCESS = "Khalti Process"
     COMPLETED = 'Completed'
     PENDING = 'Pending'
     USER_CANCELLED = 'User Cancelled'
@@ -19,3 +18,11 @@ class TXN(models.Model):
     location = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = "Transaction"
+        verbose_name_plural = "Transactions"
+        db_table = "txn"

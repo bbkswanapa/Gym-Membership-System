@@ -27,6 +27,8 @@ urlpatterns = [
     path('api/attendance/', include('attendance.api.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/exercise/', include('exercise.api.urls')),
+
+    
     # Optional UI:
     path('api/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),

@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class TxnConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'TXN'
+    name = 'txn'

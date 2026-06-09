@@ -51,9 +51,8 @@ INSTALLED_APPS = [
     'trainer',
     'subscription',
     'attendance',
-    'TXN',
     'exercise',
-
+    'txn',
 ]
 
 REST_FRAMEWORK = {
