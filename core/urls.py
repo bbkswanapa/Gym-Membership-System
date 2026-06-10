@@ -27,6 +27,7 @@ urlpatterns = [
     path('api/attendance/', include('attendance.api.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/exercise/', include('exercise.api.urls')),
+    path('txn/', include('txn.urls')),
 
     
     # Optional UI:

@@ -3,7 +3,7 @@ import requests
 
 def khalti_payment(member, txn):
     payload = {
-        "return_url": "https://example.com/payment/",
+       "return_url": "http://localhost:8000/txn/callback/",
         "website_url": "https://kmc.com/",
         "amount": int(txn.amount * 100),
         "purchase_order_id": txn.id,
